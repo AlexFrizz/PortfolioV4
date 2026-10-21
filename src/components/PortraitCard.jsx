@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import proPic from "../assets/pro-pic.jpeg";
 
 export default function PortraitCard() {
   return (
@@ -10,7 +11,7 @@ export default function PortraitCard() {
     >
       {/* Portrait Image */}
       <img
-        src="/src/assets/pro-pic.jpeg"
+        src={proPic}
         alt="Portrait"
         className="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-105 transition-transform duration-700 ease-out"
       />
