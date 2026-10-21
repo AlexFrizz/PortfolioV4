@@ -12,17 +12,26 @@ import DownloadCvButton from '../components/DownloadCvButton';
 
 /**
  * HomePage represents the core Fullscreen Bento Landing view.
+ * Always rendered in the background — when a section overlay is open,
+ * it remains visible but blurred beneath it.
+ *
+ * @param {Object}  props
+ * @param {boolean} props.frozen — When true an overlay is open; pointer-events
+ *                                 are disabled and aria-hidden is set so focus
+ *                                 stays within the overlay.
  */
-export default function HomePage() {
+export default function HomePage({ frozen = false }) {
   const { isDark, toggle } = useDarkMode();
 
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
       transition={{ duration: 0.4 }}
-      className="font-sans min-h-screen lg:h-screen lg:max-h-screen flex flex-col justify-between p-4 lg:p-6 lg:overflow-hidden bg-[#f8f9fa] dark:bg-[#0a0d14] text-[#121417] dark:text-[#f1f3f7] transition-colors duration-300 antialiased relative"
+      aria-hidden={frozen || undefined}
+      className={`font-sans min-h-screen lg:h-screen lg:max-h-screen flex flex-col justify-between p-4 lg:p-6 lg:overflow-hidden bg-[#f8f9fa] dark:bg-[#0a0d14] text-[#121417] dark:text-[#f1f3f7] transition-colors duration-300 antialiased relative ${
+        frozen ? 'pointer-events-none select-none' : ''
+      }`}
     >
       {/* Top Header / Mode Switcher */}
       <Header isDark={isDark} onToggle={toggle} />
