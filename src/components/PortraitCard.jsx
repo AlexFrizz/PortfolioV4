@@ -10,7 +10,7 @@ export default function PortraitCard() {
     >
       {/* Portrait Image */}
       <img
-        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop"
+        src="/src/assets/pro-pic.jpeg"
         alt="Portrait"
         className="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-105 transition-transform duration-700 ease-out"
       />
